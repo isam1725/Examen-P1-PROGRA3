@@ -4,7 +4,7 @@ public class Ventana {
     private JTextField txtCodigo;
     private JTextField txtNombre;
     private JComboBox cmbTipo;
-    private JTextField txtCosto;
+    private JTextField tsxtCosto;
     private JComboBox cmbPrioridad;
     private JButton agregarButton;
     private JTextArea textArea1;
@@ -29,7 +29,7 @@ public class Ventana {
     private void agregarProyecto() {
         String codigoTexto = txtCodigo.getText().trim();
         String nombre = txtNombre.getText().trim();
-        String costoTexto = txtCosto.getText().trim();
+        String costoTexto = tsxtCosto.getText().trim();
 
         // Validar que todos los campos obligatorios estén completos
         if (codigoTexto.isEmpty() || nombre.isEmpty() || costoTexto.isEmpty()
@@ -67,19 +67,19 @@ public class Ventana {
             costo = Float.parseFloat(costoTexto.replace(',', '.'));
         } catch (NumberFormatException ex) {
             mostrarError("El costo estimado debe ser un número válido.");
-            txtCosto.requestFocus();
+            tsxtCosto.requestFocus();
             return;
         }
 
         if (Float.isNaN(costo) || Float.isInfinite(costo)) {
             mostrarError("El costo estimado debe ser un número válido.");
-            txtCosto.requestFocus();
+            tsxtCosto.requestFocus();
             return;
         }
 
         if (costo <= 0) {
             mostrarError("El costo estimado debe ser mayor a cero.");
-            txtCosto.requestFocus();
+            tsxtCosto.requestFocus();
             return;
         }
 
@@ -134,7 +134,7 @@ public class Ventana {
     private void limpiarCampos() {
         txtCodigo.setText("");
         txtNombre.setText("");
-        txtCosto.setText("");
+        tsxtCosto.setText("");
         cmbTipo.setSelectedIndex(0);
         cmbPrioridad.setSelectedIndex(0);
         txtCodigo.requestFocus();
